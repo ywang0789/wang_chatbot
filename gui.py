@@ -1,7 +1,15 @@
 import sys
-from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QPushButton, QTextEdit, QLineEdit,QLabel, QInputDialog)
+from PyQt5.QtWidgets import (
+    QApplication,
+    QWidget,
+    QVBoxLayout,
+    QPushButton,
+    QTextEdit,
+    QLineEdit,
+    QLabel,
+    QInputDialog,
+)
 import bot as b
-
 
 
 class ChatbotGUI(QWidget):
@@ -25,15 +33,15 @@ class ChatbotGUI(QWidget):
         layout.addWidget(self.inputLineEdit)
 
         # Send Button
-        self.sendBtn = QPushButton('Send', self)
-        self.sendBtn.setShortcut('Return')
+        self.sendBtn = QPushButton("Send", self)
+        self.sendBtn.setShortcut("Return")
         self.sendBtn.clicked.connect(self.sendMessage)
         layout.addWidget(self.sendBtn)
 
         # Set the main layout
         self.setLayout(layout)
 
-        self.setWindowTitle('Chatbot GUI')
+        self.setWindowTitle("Chatbot GUI")
         self.setGeometry(100, 100, 400, 300)
         self.show()
 
@@ -49,12 +57,13 @@ class ChatbotGUI(QWidget):
         # You can replace this with your chatbot's response
         response = f"Chatbot:{self.bot.chat(message)}"
         self.textEdit.append(response)
-        
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     # Prompt for API Key
-    API_KEY, ok= QInputDialog.getText(None, 'API Key', 'Enter your API Key:')
+    API_KEY, ok = QInputDialog.getText(None, "API Key", "Enter your API Key:")
     if ok and API_KEY:
         print("API Key entered. Starting GUI...")
         exe = ChatbotGUI(API_KEY)
