@@ -40,6 +40,8 @@ class ChatbotGUI(QWidget):
     def sendMessage(self):
         # Get the user message
         message = self.inputLineEdit.text().strip()
+        # Clear the input field
+        self.inputLineEdit.clear()
 
         # print the user message
         self.textEdit.append(f"You: {message}")
@@ -47,10 +49,7 @@ class ChatbotGUI(QWidget):
         # You can replace this with your chatbot's response
         response = f"Chatbot:{self.bot.chat(message)}"
         self.textEdit.append(response)
-
-        # Clear the input field
-        self.inputLineEdit.clear()
-
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
