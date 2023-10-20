@@ -26,6 +26,7 @@ class ChatbotGUI(QWidget):
 
         # Send Button
         self.sendBtn = QPushButton('Send', self)
+        self.sendBtn.setShortcut('Return')
         self.sendBtn.clicked.connect(self.sendMessage)
         layout.addWidget(self.sendBtn)
 
