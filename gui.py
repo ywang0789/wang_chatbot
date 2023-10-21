@@ -1,5 +1,6 @@
 import sys
 import os
+import api_keys as keys
 from PyQt5.QtWidgets import (
     QApplication,
     QWidget,
@@ -74,13 +75,5 @@ class ChatbotGUI(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
-    # Prompt for API Key
-    API_KEY, ok = QInputDialog.getText(None, "API Key", "Enter your API Key:")
-    if ok and API_KEY:
-        print("API Key entered. Starting GUI...")
-        exe = ChatbotGUI(API_KEY)
-        sys.exit(app.exec_())
-    else:
-        print("No API Key entered. Exiting...")
-        sys.exit()
+    run = ChatbotGUI(keys.gpt_api_key)
+    sys.exit(app.exec_())

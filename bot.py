@@ -1,7 +1,7 @@
 import openai
+import api_keys as keys
 
 MODEL = "gpt-3.5-turbo"
-
 
 class bot:
     def __init__(self, key):
@@ -26,11 +26,8 @@ class bot:
 
 
 if __name__ == "__main__":
-    b = bot("")
+    b = bot(keys.gpt_api_key)
     print(b.chat("255 255 255"))
-    print(b.chat("255 255 0"))
-    print(b.chat("255 0 255"))
+    print(b.chat("0 0 0"))
     print(b.chat("255 0 0"))
-    print(b.chat("255 0 0"))
-    print("history:\n")
-    print(b.history)
+
