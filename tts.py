@@ -11,7 +11,6 @@ def createAudio(text):
     )
     elevenlabs.save(audio, "voice.mp3")
 
-
 if __name__ == "__main__":
     #audio = getAudio("Hello, my name is Bella.")
     #elevenlabs.save(audio, "test.mp3")
