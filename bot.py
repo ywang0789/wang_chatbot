@@ -25,9 +25,9 @@ class bot:
         return response
 
 
-if __name__ == "__main__":
-    b = bot(keys.gpt_api_key)
-    print(b.chat("255 255 255"))
-    print(b.chat("0 0 0"))
-    print(b.chat("255 0 0"))
+# if __name__ == "__main__":
+#     b = bot(keys.gpt_api_key)
+#     print(b.chat("255 255 255"))
+#     print(b.chat("0 0 0"))
+#     print(b.chat("255 0 0"))
 

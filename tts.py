@@ -26,7 +26,7 @@ def delete_file_if_exists(filepath):
         print("File exists, deleting...")
         os.remove(filepath)
 
-if __name__ == "__main__":
-    audio = createAudio("Hello, my name is Bella.")
-    #os.remove(filename)
-    pass
+# if __name__ == "__main__":
+#     audio = createAudio("Hello, my name is Bella.")
+#     #os.remove(filename)
+#     pass
