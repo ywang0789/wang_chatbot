@@ -9,23 +9,28 @@ class bot:
         openai.api_key = self.key
         self.history = []
         self.history.append(
-            {"role": "system", "content": "in this scenario, your name is bob the builder"}
+            {
+                "role": "system",
+                "content": "you are a robot that can identify colors. you will be give 3 values in rgb and you will have to identify the color. you will answer in as few words as possible.",
+            }
         )
 
-    def chat(self, msg):
-        self.history.append({"role": "user", "content": msg})
-        response = openai.ChatCompletion.create(
-            model=MODEL, messages=self.history
-        )
-        
+    def chat(self, user_input):
+        self.history.append({"role": "user", "content": user_input})
+        response = openai.ChatCompletion.create(model=MODEL, messages=self.history)
+
         response = response["choices"][0]["message"]["content"]
 
         self.history.append({"role": "system", "content": response})
         return response
-    
+
 
 if __name__ == "__main__":
     b = bot("")
-    print(b.chat("hello what is your name?"))
-    print(b.chat("How are you?"))
+    print(b.chat("255 255 255"))
+    print(b.chat("255 255 0"))
+    print(b.chat("255 0 255"))
+    print(b.chat("255 0 0"))
+    print(b.chat("255 0 0"))
+    print("history:\n")
     print(b.history)

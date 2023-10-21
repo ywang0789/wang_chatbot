@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.QtWidgets import (
     QApplication,
     QWidget,
@@ -9,6 +10,10 @@ from PyQt5.QtWidgets import (
     QLabel,
     QInputDialog,
 )
+
+from PyQt5.QtCore import QUrl
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
+
 import bot as b
 
 
@@ -58,6 +63,14 @@ class ChatbotGUI(QWidget):
         response = f"Chatbot:{self.bot.chat(message)}"
         self.textEdit.append(response)
 
+        # Play the response
+        def playAudio(file_name):
+            path = os.path.join(os.getcwd(), file_name)
+            url = QUrl.fromLocalFile(path)
+            content = QMediaContent(url)
+
+            self.player.setMedia(content)
+            self.player.play()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
