@@ -9,7 +9,7 @@ def createAudio(text):
         voice="Nicole",
         model="eleven_monolingual_v1"
     )
-    elevenlabs.save(audio, "voice.mp3")
+    elevenlabs.save(audio, "hidden/voice.mp3")
 
 if __name__ == "__main__":
     #audio = getAudio("Hello, my name is Bella.")
