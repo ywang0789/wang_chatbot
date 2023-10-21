@@ -11,7 +11,7 @@ class bot:
         self.history.append(
             {
                 "role": "system",
-                "content": "you are a robot that can identify colors. you will be give 3 values in rgb and you will have to identify the color. you will answer in as few words as possible.",
+                "content": "you are a help assistant",
             }
         )
 

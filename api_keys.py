@@ -1,6 +1,6 @@
 import json 
 
-with open("hidden/keys.json", "r") as file:
+with open("hidden/api_keys.json", "r") as file:
     keys = json.load(file)
 
 gpt_api_key = keys["gpt_api_key"]

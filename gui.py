@@ -66,14 +66,13 @@ class ChatbotGUI(QWidget):
         self.textEdit.append(f"Chatbot:{reply}")
         
         # play audio
-        tts.createAudio(reply)
-        self.playAudio()
+        # self.player.stop()
+        # path = tts.createAudio(reply)
+        # self.playAudio(path)
 
 
     # Play the response
-    def playAudio(self):
-        # get path to audio file
-        path = os.path.join(os.getcwd(), "voice.mp3")
+    def playAudio(self,path):
         url = QUrl.fromLocalFile(path)
         content = QMediaContent(url)
         
