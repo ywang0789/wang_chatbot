@@ -1,6 +1,7 @@
 import sys
 import os
 import api_keys as keys
+import tts as tts
 from PyQt5.QtWidgets import (
     QApplication,
     QWidget,
@@ -19,10 +20,10 @@ import bot as b
 
 
 class ChatbotGUI(QWidget):
-    def __init__(self, API_KEY):
+    def __init__(self):
         super().__init__()
-        self.API_KEY = API_KEY
-        self.bot = b.bot(self.API_KEY)
+        self.bot = b.bot(keys.gpt_api_key)
+        self.player = QMediaPlayer()
         self.initUI()
 
     def initUI(self):
@@ -46,34 +47,39 @@ class ChatbotGUI(QWidget):
 
         # Set the main layout
         self.setLayout(layout)
-
         self.setWindowTitle("Chatbot GUI")
         self.setGeometry(100, 100, 400, 300)
         self.show()
 
     def sendMessage(self):
         # Get the user message
-        message = self.inputLineEdit.text().strip()
+        user_input = self.inputLineEdit.text().strip()
+        
         # Clear the input field
         self.inputLineEdit.clear()
 
         # print the user message
-        self.textEdit.append(f"You: {message}")
+        self.textEdit.append(f"You: {user_input}")
 
-        # You can replace this with your chatbot's response
-        response = f"Chatbot:{self.bot.chat(message)}"
-        self.textEdit.append(response)
+        # reply to the user message
+        reply = self.bot.chat(user_input)
+        self.textEdit.append(f"Chatbot:{reply}")
+        
+        # play audio
+        tts.createAudio(reply)
+        self.playAudio()
 
-        # Play the response
-        def playAudio(file_name):
-            path = os.path.join(os.getcwd(), file_name)
-            url = QUrl.fromLocalFile(path)
-            content = QMediaContent(url)
-
-            self.player.setMedia(content)
-            self.player.play()
+    # Play the response
+    def playAudio(self):
+        path = os.path.join(os.getcwd(), "voice.mp3")
+        url = QUrl.fromLocalFile(path)
+        content = QMediaContent(url)
+        
+        self.player.setMedia(content)
+        self.player.play()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    run = ChatbotGUI(keys.gpt_api_key)
+    myApp = ChatbotGUI()
+    myApp.show()
     sys.exit(app.exec_())

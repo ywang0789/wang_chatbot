@@ -3,13 +3,14 @@ import api_keys as keys
 
 elevenlabs.set_api_key(keys.elevenlabs_api_key)
 
-def getAudio(text):
+def createAudio(text):
     audio = elevenlabs.generate(
         text=text,
-        voice="Bella",
+        voice="Nicole",
         model="eleven_monolingual_v1"
     )
-    return audio
+    elevenlabs.save(audio, "voice.mp3")
+
 
 if __name__ == "__main__":
     #audio = getAudio("Hello, my name is Bella.")
