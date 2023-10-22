@@ -1,5 +1,13 @@
 import sys
+# main window
 from PyQt5.QtWidgets import QMainWindow, QApplication
+
+#play audio tts
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtCore import QUrl
+import tts
+
+# load ui file
 from PyQt5.uic import loadUi
 
 # threads
@@ -22,6 +30,8 @@ class UI(QMainWindow):
         
         # initiate bot
         self.bot = bot.bot(keys.gpt_api_key)
+
+        self.player = QMediaPlayer()
 
         # button clicked events
         self.home_button.clicked.connect(self.showHome)
@@ -60,42 +70,23 @@ class UI(QMainWindow):
         self.chat_output_textedit.append(f"Chatbot: {reply}")
         
         # play audio
-        # self.player.stop()
-        # path = tts.createAudio(reply)
-        # self.playAudio(path)
+        self.player.stop()
+        self.player = QMediaPlayer()
+        path = tts.createAudio(reply)
+        self.playAudio(path)
+
+    # Play the response
+    def playAudio(self,path):
+        url = QUrl.fromLocalFile(path)
+        content = QMediaContent(url)
+        
+        # play the audio
+        self.player.setMedia(content)
+        self.player.play()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = UI()
     ui.show()
-
-    
     app.exec_()
 
-    
-    
-
-
-
-# if __name__ == "__main__":
-#     app = QtWidgets.QApplication(sys.argv)
-#     MainWindow = QtWidgets.QMainWindow()
-#     ui = Ui_MainWindow()
-#     ui.setupUi(MainWindow)
-#     MainWindow.show()
-
-# clicked events
-
-
-        # def showHome(self):
-        #         self.stackedWidget.setCurrentIndex(0)
-
-        # def showChat(self):
-        #         self.stackedWidget.setCurrentIndex(1)
-
-
-
-
-
-
-#     sys.exit(app.exec_())
