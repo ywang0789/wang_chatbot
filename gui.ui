@@ -1046,7 +1046,7 @@ background-color: rgb(44, 49, 60);</string>
                      <string>Return</string>
                     </property>
                    </widget>
-                   <widget class="QTextEdit" name="chat_input_textedit">
+                   <widget class="QLineEdit" name="chat_input_lineedit">
                     <property name="geometry">
                      <rect>
                       <x>20</x>
