@@ -2,6 +2,9 @@ import elevenlabs
 import os
 import api_keys as keys
 
+# default voice
+VOICE = "coleshill"
+
 # default voice file name
 FILENAME = "voice"
 
@@ -14,7 +17,7 @@ def createAudio(text):
     # generate audio
     audio = elevenlabs.generate(
         text=text,
-        voice="Nicole",
+        voice=VOICE,
         model="eleven_monolingual_v1"
     )
     # save audio
@@ -24,7 +27,7 @@ def createAudio(text):
 
 
 
-# if __name__ == "__main__":
-#     audio = createAudio("Hello, my name is Bella.")
-#     #os.remove(filename)
-#     pass
+if __name__ == "__main__":
+   print(type(elevenlabs.voices()))
+   
+

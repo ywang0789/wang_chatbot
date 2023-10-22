@@ -11,13 +11,13 @@ class bot:
         self.history.append(
             {
                 "role": "system",
-                "content": "you are a help assistant",
+                "content": "you are a help assistant. you may only answer in one or two sentences.",
             }
         )
 
     def chat(self, user_input):
         self.history.append({"role": "user", "content": user_input})
-        response = openai.ChatCompletion.create(model=MODEL, messages=self.history)
+        response = openai.ChatCompletion.create(model=MODEL, messages=self.history, max_tokens=50)
 
         response = response["choices"][0]["message"]["content"]
 

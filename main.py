@@ -70,6 +70,7 @@ class UI(QMainWindow):
         self.chat_output_textedit.append(f"Chatbot: {reply}")
         
         # play audio
+        self.player.stop()
         self.player = QMediaPlayer()
         path = tts.createAudio(reply)
         self.playAudio(path)
