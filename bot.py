@@ -11,7 +11,7 @@ class bot:
         self.history.append(
             {
                 "role": "system",
-                "content": "you are a help assistant. you may only answer in one or two sentences.",
+                "content": "you are a help assistant. you may only answer in less than 5 sentences.",
             }
         )
 
