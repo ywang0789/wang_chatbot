@@ -64,6 +64,14 @@ class UI(QMainWindow):
         # path = tts.createAudio(reply)
         # self.playAudio(path)
 
+    # Play the response
+    # def playAudio(self,path):
+    #     url = QUrl.fromLocalFile(path)
+    #     content = QMediaContent(url)
+        
+    #     # play the audio
+    #     self.player.setMedia(content)
+    #     self.player.play()
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = UI()
